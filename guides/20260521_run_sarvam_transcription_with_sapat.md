@@ -37,7 +37,7 @@ optional timestamp or diarization data. Sarvam's current docs recommend
 
 - Create a Daytona workspace for the Sapat repo.
 - Add the Sarvam provider branch and install Sapat locally.
-- Put only placeholder-free environment variables in `.env`.
+- Put only local, uncommitted environment variables in `.env`.
 - Run `sapat` with `--api sarvam` against a short recording or a folder of MP4 files.
 - Validate the `.txt` transcript, language detection, and failure paths before using it in a production workflow.
 
@@ -126,7 +126,7 @@ SARVAM_API_KEY=your_sarvam_api_key_here
 SARVAM_STT_ENDPOINT=https://api.sarvam.ai/speech-to-text
 SARVAM_STT_MODEL=saaras:v3
 SARVAM_STT_MODE=transcribe
-SARVAM_LANGUAGE_CODE=unknown
+SARVAM_LANGUAGE_CODE=
 ```
 
 The provider reads these values:
@@ -135,7 +135,7 @@ The provider reads these values:
 - `SARVAM_STT_ENDPOINT`: Optional. Defaults to `https://api.sarvam.ai/speech-to-text`.
 - `SARVAM_STT_MODEL`: Optional. Defaults to `saaras:v3`.
 - `SARVAM_STT_MODE`: Optional. Defaults to `transcribe`.
-- `SARVAM_LANGUAGE_CODE`: Optional. Use `unknown` for detection or a BCP-47 code such as `hi-IN`, `ta-IN`, or `en-IN`.
+- `SARVAM_LANGUAGE_CODE`: Optional. Leave blank to choose per run, use `unknown` for detection, or set a BCP-47 code such as `hi-IN`, `ta-IN`, or `en-IN` as a fallback.
 
 Sapat also maps common short language codes. For example, `--language hi`
 becomes `hi-IN`, `--language ta` becomes `ta-IN`, and `--language en` becomes
